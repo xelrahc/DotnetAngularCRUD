@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+  <ng-container *ngIf="userService.currentUser$ | async">
+    <a class="navbar-brand" routerLink="/users">My App</a>
+  </ng-container>
+  <ng-container *ngIf="!(userService.currentUser$ | async)">
+    <a class="navbar-brand" routerLink="/">My App</a>
+  </ng-container>
+  
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarCollapse"
+    aria-controls="navbarCollapse"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto" *ngIf="userService.currentUser$ | async">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/users" routerLinkActive="active">User Lists</a>
+      </li>
+    </ul>
+
+    <div class="dropdown" *ngIf="(userService.currentUser$ | async) as user" dropdown>
+      <!-- <pre>{{user | json}}</pre> -->
+      <a class="dropdown-toggle text-light" dropdownToggle>Welcome {{user.lastName | uppercase}}, {{user.firstName | uppercase}}</a>
+      <div class="dropdown-menu" *dropdownMenu>
+        <a class="dropdown-item" (click)="editProfile(user.id)">Edit Profile</a>
+        <div class="dropwdown-divider"></div>
+        <a class="dropdown-item" (click)="logout()">Logout</a>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,24 @@
+<h4>Users
+  <div class="float-right mr-2 mb-2" *ngIf="isAdmin"><button type="button" class="btn btn-primary" (click)="addUser('fromLists')">Add User</button></div>
+</h4>
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Firstname</th>
+      <th scope="col">Lastname</th>
+      <th scope="col">Email</th>
+      <th *ngIf="isAdmin" scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users; index as i">
+      <td>{{ user.firstName }}</td>
+      <td>{{ user.lastName }}</td>
+      <td>{{ user.email }}</td>
+      <td *ngIf="isAdmin">
+          <button type="button" class="btn btn-primary m-1" (click)="editUser(user.id)">Edit</button>
+          <button type="button" *ngIf="user.id !== 20" class="btn btn-danger m-1"(click)="deleteUser(user.id)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+</table>
