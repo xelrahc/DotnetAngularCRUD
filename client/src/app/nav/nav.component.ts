@@ -21,7 +21,7 @@ export class NavComponent implements OnInit {
     this.toastr.success("Successfully logged out.");
   }
 
-  editProfile(id: number) {debugger
+  editProfile(id: number) {
     
     this.router.navigateByUrl(`/users/${id}`);
     // if(id == )

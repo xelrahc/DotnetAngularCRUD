@@ -56,7 +56,7 @@ export class UsersComponent implements OnInit {
 
   getUserDetail(userId) {
     this.userService.getUser(userId).subscribe(user => {
-      this.user = user;debugger
+      this.user = user;
 
       this.userForm.patchValue({
         email: this.user.email,
