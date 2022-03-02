@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       this.toastr.success("Successfully logged in.");
     }, error => {
       console.log(error);
-      // this.toastr.error(error.error);
+      this.toastr.error(error.error);
     });
   }
 }
